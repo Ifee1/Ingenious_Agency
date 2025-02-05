@@ -1,0 +1,12 @@
+.container {
+  background-color: rgb(9, 9, 37);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: bold;
+}

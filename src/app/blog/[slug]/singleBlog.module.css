@@ -1,0 +1,61 @@
+.container {
+  display: flex;
+  gap: 100px;
+}
+
+.ImgContainer {
+  flex: 1;
+  position: relative;
+  /* height: calc(100vh-200px); */
+}
+
+.Img {
+  object-fit: cover;
+}
+
+.textContainer {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.title {
+  font-size: 64px;
+}
+
+.details {
+  display: flex;
+  gap: 20px;
+}
+
+.userImg {
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.detailText {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.detailTitle {
+  font-weight: bold;
+  color: grey;
+}
+
+.detailValue {
+  font-weight: 500;
+}
+
+.contentDiv {
+  font-size: 20px;
+  width: 80%;
+}
+
+@media (max-width: 768px) {
+  .ImgContainer {
+    display: none;
+  }
+}

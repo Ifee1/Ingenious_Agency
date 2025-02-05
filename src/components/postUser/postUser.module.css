@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.userImg {
+  object-fit: cover;
+  border-radius: 50%;
+}
+.texts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.title {
+  font-weight: bold;
+  color: grey;
+}
+
+.username {
+  font-weight: 500;
+}
