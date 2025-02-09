@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./postUser.module.css";
-import { getAllUsers, getUser } from "../../../lib/data";
+import { getAllUsers, getUser } from "../../lib/data";
 import Image from "next/image";
 
 // const getData = async function (userId: number) {

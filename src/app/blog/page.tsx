@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./blog.module.css";
 import PostCard from "@/components/postCard/postCard";
 import { Post } from "../types/types";
-import { getAllPosts } from "../../../lib/data";
+import { getAllPosts } from "../../lib/data";
 
 // FETCHING DATA WITH AN API
 const getData = async function () {
@@ -20,22 +20,23 @@ const getData = async function () {
 async function BlogPage(params: any) {
   // FETCHING DATA WITH AN API
 
-  const posts = await getData();
+  // const posts = await getData();
 
   // FETCHING DATA WITHOUT AN API
-  // const posts = await getAllPosts();
+  const posts = await getAllPosts();
   // console.log(posts);
   return (
     <>
       <div className={styles.container}>
         {posts.map(function (post: Post) {
           return (
-            <div className={styles.singlePost} key={post.id}>
+            <div className={styles.singlePost}>
               <PostCard post={post} />
             </div>
           );
         })}
       </div>
+
       <h1>Sup</h1>
     </>
   );

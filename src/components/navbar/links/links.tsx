@@ -5,18 +5,20 @@ import React, { useState } from "react";
 import styles from "./links.module.css";
 import NavbarLink from "./navbarLink/navbarlink";
 import { getSession, signOut, useSession } from "next-auth/react";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-
+import { useRouter } from "next/navigation";
+// import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 async function logout() {
   await signOut();
+
   console.log("logged out");
 }
 function Links() {
   const { data: session, status } = useSession();
   const [open, setOpen] = useState(false);
+  const router = useRouter();
 
-  console.log("🔹 Navbar session status:", status);
-  console.log("🔹 Navbar session data:", session);
+  // console.log("🔹 Navbar session status:", status);
+  // console.log("🔹 Navbar session data:", session);
 
   function handleOpen() {
     setOpen(!open);
@@ -59,7 +61,6 @@ function Links() {
             );
           })}
 
-          {session?.user && <p>Welcome, {session.user.name}!</p>}
           {session?.user?.isAdmin && (
             <NavbarLink item={{ title: "Admin", path: "/admin" }} />
           )}

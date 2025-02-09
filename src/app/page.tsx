@@ -14,13 +14,25 @@ export default function Home() {
         </div>
         <div className={styles.brands}>
           {/* <Image src="/brand1.png" alt="" fill className={styles.brandImg} /> */}
-          <Image src="/brand2.png" alt="" fill className={styles.brandImg} />
+          <Image
+            src="/brand2.png"
+            alt=""
+            sizes="300px"
+            fill
+            className={styles.brandImg}
+          />
           {/* <Image src="/brand3.png" alt="" fill className={styles.brandImg} /> */}
           {/* <Image src="/brand4.png" alt="" fill className={styles.brandImg} /> */}
         </div>
       </div>
       <div className={styles.imageContainer}>
-        <Image src="/heroImg.png" alt="" fill className={styles.heroImg} />
+        <Image
+          src="/heroImg.png"
+          alt=""
+          sizes="300px"
+          fill
+          className={styles.heroImg}
+        />
       </div>
     </div>
   );

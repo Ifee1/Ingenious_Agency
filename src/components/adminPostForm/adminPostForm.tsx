@@ -1,40 +1,36 @@
 "use client";
 
-import React, { useState } from "react";
-import { addPost, deletePost } from "../../lib/actions";
-import Image from "next/image";
-import { postFormData } from "../types/types";
+import React, { useActionState, useState } from "react";
+import styles from "./adminPostForm.module.css";
+import { addPost } from "@/lib/actions";
+import { postFormData } from "@/app/types/types";
 
-function ServerActionTestPage() {
+function AdminPostForm({ userId }: { userId: string }) {
   const [formData, setFormData] = useState<postFormData>({
     title: "",
     desc: "",
+    userId: userId,
     slug: "",
-    userId: "",
-    id: "",
   });
+  const [state, formAction] = useActionState(addPost, undefined);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     try {
-      await addPost(formData);
+      // await registerUser(formData);
+      await addPost({}, formData);
+      // startTransition(() => {
+      //   formAction(formData);
+      // });
     } catch (error) {
       console.log(error);
     }
   };
-  const handleDelete = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
 
-    try {
-      await deletePost(formData);
-    } catch (error) {
-      console.log(error);
-    }
-  };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className={styles.container}>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <h1>Add New Post</h1>
         <input
           type="text"
           name="title"
@@ -47,18 +43,7 @@ function ServerActionTestPage() {
           }
           placeholder="title"
         />
-        <input
-          type="text"
-          name="desc"
-          value={formData.desc}
-          onChange={(e) =>
-            setFormData((prevFormData) => ({
-              ...prevFormData,
-              desc: e.target.value,
-            }))
-          }
-          placeholder="description"
-        />
+
         <input
           type="text"
           name="slug"
@@ -72,7 +57,7 @@ function ServerActionTestPage() {
           placeholder="slug"
         />
         <input
-          type="text"
+          type="hidden"
           name="userId"
           value={formData.userId}
           onChange={(e) =>
@@ -81,30 +66,33 @@ function ServerActionTestPage() {
               userId: e.target.value,
             }))
           }
-          placeholder="userId"
+          placeholder="slug"
         />
-        {/* <Image /> */}
-        <button>Create New Post</button>
-      </form>
-
-      <form onSubmit={handleDelete}>
-        <input
-          type="text"
-          name="id"
-          value={formData.id}
+        <textarea
+          name="desc"
+          id=""
+          value={formData.desc}
           onChange={(e) =>
             setFormData((prevFormData) => ({
               ...prevFormData,
-              id: e.target.value,
+              desc: e.target.value,
             }))
           }
-          placeholder="postId"
-        />
-        <button>delete</button>
+          cols={10}
+          rows={10}
+        ></textarea>
+
+        <button>Add</button>
+
+        {state?.error && (
+          <b style={{ color: "red", fontSize: "1.5rem" }}>{state.error}</b>
+        )}
+        {/* {state?.success && (
+          <b style={{ color: "green", fontSize: "1.5rem" }}>{state.success}</b>
+        )} */}
       </form>
     </div>
   );
-  33;
 }
 
-export default ServerActionTestPage;
+export default AdminPostForm;

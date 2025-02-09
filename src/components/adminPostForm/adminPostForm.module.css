@@ -1,18 +1,7 @@
 .container {
   display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.wrapper {
-  width: 500px;
-  background-color: var(--bgSoft);
-  padding: 50px;
-  display: flex;
   flex-direction: column;
-  text-align: center;
-  gap: 30px;
-  border-radius: 5px;
+  gap: 20px;
 }
 
 .form {
@@ -22,9 +11,10 @@
   gap: 30px;
 }
 
-.form input {
+.form input,
+.form textarea {
   padding: 20px;
-  background-color: var(--bg);
+  background-color: var(--bgSoft);
   color: var(--textColor);
   border: none;
   border-radius: 5px;
@@ -38,10 +28,4 @@
   font-weight: bold;
   border: none;
   border-radius: 5px;
-}
-
-.admin {
-  display: flex;
-  justify-content: space-between;
-  border: 1px solid red;
 }

@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import styles from "./singleBlog.module.css";
 import Image from "next/image";
 import PostUser from "@/components/postUser/PostUser";
-import { getSinglePost } from "../../../../lib/data";
+import { getSinglePost } from "../../../lib/data";
 
 // FETCHING DATA WITH API
 const getData = async function (slug: number) {

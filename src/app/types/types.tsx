@@ -22,12 +22,11 @@ export type postData = {
 };
 
 export type postFormData = {
-  // Img: string;
+  Img?: string;
   slug: string;
   title: string;
   desc: string;
   userId: string;
-  id?: string;
 };
 
 declare module "next-auth" {
@@ -50,12 +49,14 @@ export interface GithubProfile extends Profile {
 export type RegisterUser = {
   username: string;
   password: string;
-  passwordRepeat: string;
+  passwordRepeat?: string;
   email: string;
   img?: string;
+  isAdmin?: boolean;
 };
 
 export type LoginUser = {
   username: string;
   password: string;
+  isAdmin?: Boolean;
 };

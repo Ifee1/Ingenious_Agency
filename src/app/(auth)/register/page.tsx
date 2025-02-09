@@ -7,10 +7,11 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import { registerUser } from "../../../../lib/actions";
+// import { registerUser } from "../../../../lib/actions";
 import styles from "./register.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { registerUser } from "@/lib/actions";
 
 function RegisterPage() {
   const [formData, setFormData] = useState<RegisterUser>({
@@ -18,6 +19,7 @@ function RegisterPage() {
     email: "",
     password: "",
     passwordRepeat: "",
+    isAdmin: undefined,
   });
 
   const [state, formAction] = useActionState(registerUser, undefined);
@@ -35,8 +37,8 @@ function RegisterPage() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
+      // await registerUser(formData);
       // await registerUser({}, formData);
-      // formAction(formData);
       startTransition(() => {
         formAction(formData);
       });
@@ -99,6 +101,20 @@ function RegisterPage() {
             placeholder="password again"
           />
 
+          <span>
+            <input
+              type="checkbox"
+              name="isAdmin"
+              placeholder="isAdmin"
+              checked={!!formData.isAdmin}
+              style={{ marginRight: "1rem" }}
+              onChange={(e) =>
+                setFormData({ ...formData, isAdmin: e.target.checked })
+              }
+            />
+            <label htmlFor="IsAdmin"> Admin Access </label>
+          </span>
+
           <button>Register</button>
 
           {state?.error && (
@@ -106,7 +122,7 @@ function RegisterPage() {
           )}
           {state?.success && (
             <b style={{ color: "green", fontSize: "1.5rem" }}>
-              {state.message}
+              {state.success}
             </b>
           )}
           <Link href="/login">

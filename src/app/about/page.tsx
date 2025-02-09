@@ -32,7 +32,13 @@ function AboutPage() {
         </div>
       </div>
       <div className={styles.imageContainer}>
-        <Image src="/about.jpeg" alt="" fill className={styles.Img} />
+        <Image
+          src="/about.jpeg"
+          alt=""
+          sizes="300px"
+          fill
+          className={styles.Img}
+        />
       </div>
     </div>
   );

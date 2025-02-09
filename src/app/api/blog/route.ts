@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { connectToDb } from "../../../../lib/connectToDb";
-import { Post } from "../../../../lib/models";
+import { connectToDb } from "../../../lib/connectToDb";
+import { Post } from "../../../lib/models";
 
 export const GET = async (req: any, res: any) => {
   try {
